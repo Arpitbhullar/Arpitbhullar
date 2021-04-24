@@ -1,6 +1,7 @@
-import 'package:final_project/LoginScreen.dart';
+import 'package:final_project/components/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'HomePage.dart';
 import 'components/Background.dart';
 
 void main() {
@@ -23,9 +24,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.amber,
       ),
-      home: LoginScreen(),
+      home: HomePage(),
     );
   }
 }

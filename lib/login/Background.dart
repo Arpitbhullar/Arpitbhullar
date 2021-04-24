@@ -15,18 +15,7 @@ class Background extends StatelessWidget {
       height: size.height,
       child: Stack(
         alignment: Alignment.center,
-        children: <Widget>[
-          Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset(
-              "images/background1.jpeg",
-              width: size.width
-            ),
-          ),
 
-          child,
-        ],
       ),
     );
   }

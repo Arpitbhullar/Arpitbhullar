@@ -1,5 +1,6 @@
+import 'package:final_project/login/LoginPage.dart';
 import 'package:flutter/material.dart';
-import 'package:final_project/LoginScreen.dart';
+import 'package:final_project/HomePage.dart';
 import 'package:final_project/components/rounded_button.dart';
 import 'package:final_project/components/constants.dart';
 
@@ -16,7 +17,7 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "WELCOME TO EDU",
+              "Welcome Teacher!, please login to continue:",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
            RoundedButton(
@@ -26,7 +27,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return LoginScreen();
+                      return LoginPage();
                     },
                   ),
                 );
