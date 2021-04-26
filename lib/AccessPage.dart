@@ -11,6 +11,7 @@ class AccessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlueAccent,
       body: ListView(
           children: <Widget>[
       ListTile(
@@ -18,7 +19,7 @@ class AccessPage extends StatelessWidget {
       title: Text('Student Records'),
     ),
             RoundedButton(
-              text: "Open Records",
+              text: "Access Student Directory",
               press: () {
                 Navigator.push(
                   context,
@@ -32,10 +33,10 @@ class AccessPage extends StatelessWidget {
             ),
     ListTile(
     leading: Icon(Icons.login),
-    title: Text('Make an Entry'),
+    title: Text('Make a new observation'),
     ),
             RoundedButton(
-              text: "Make a new entry",
+              text: "Click to make an observation",
               press: () {
                 Navigator.push(
                   context,

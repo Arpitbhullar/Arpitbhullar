@@ -6,110 +6,231 @@ class BrainGym extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body : ListPage(),
+      body : MyListView(),
     );
   }
 }
 
-class ListPage extends StatefulWidget {
-  ListPage({Key key, this.title}) : super(key: key);
+class MyListView extends StatelessWidget {
+  List<List<Color>> colors = <List<Color>>[
+    [
+      Colors.redAccent,
+      Colors.red[200],
+    ],
+    [
+      Colors.pinkAccent,
+      Colors.pink[200],
+    ],
+    [
+      Colors.yellowAccent,
+      Colors.yellow[200],
+    ],
+    [
+      Colors.orangeAccent,
+      Colors.orange[200],
+    ],
+    [
+      Colors.purpleAccent,
+      Colors.purple[200],
+    ],
+    [Colors.cyanAccent, Colors.cyan[200]]
+  ];
 
-  final String title;
-
-  @override
-  _ListPageState createState() => _ListPageState();
-}
-
-class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-      appBar: topAppBar,
-      body: makeBody,
-      bottomNavigationBar: makeBottom,
-    );
+    return DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          body: Column(
+            children: <Widget>[
+              Container(
+                  height: 80,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Colors.amber, Colors.amberAccent],
+                    ),
+                  ),
+                  child: Container(
+                    padding: EdgeInsets.only(left: 5, right: 5, ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        IconButton(
+                          icon: Icon(Icons.arrow_back, color: Colors.white),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.menu, color: Colors.white),
+                        )
+                      ],
+                    ),
+                  )),
+              Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.amber, Colors.purple],
+                  ),
+                ),
+                child: TabBar(
+                  tabs: <Widget>[
+                    Tab(
+                      child: Text("Exercises"),
+                    ),
+                    Tab(
+                      child: Text("Catalog"),
+                    ),
+                    Tab(
+                      child: Text("Saved"),
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: TabBarView(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      child: ListView.builder(
+                        itemCount: 20, //total no of list items
+                        itemBuilder: (BuildContext context, int currentitem) {
+                          return GestureDetector(
+                            onTap: () {
+                              print("tapped on item $currentitem");
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors:
+                                    colors[currentitem % colors.length]),
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  new BoxShadow(
+                                      color: Colors.black54,
+                                      blurRadius: 3.5,
+                                      offset: new Offset(1.0, 2.0)),
+                                ],
+                              ),
+                              margin: EdgeInsets.only(
+                                  top: 10, left: 20, right: 20, bottom: 10),
+                              height: 150,
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(  //left half image avtar of listitem
+                                    flex: 1,
+                                    child: Container(
+                                      alignment: Alignment.topLeft,
+                                      margin: EdgeInsets.only(left: 20,top: 15),
+                                      child: CircleAvatar(
+                                        radius: 30,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(   //center of listitem
+                                    flex: 2,
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      padding: EdgeInsets.only(top: 20,left: 5),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: Container(
+                                                alignment: Alignment.centerLeft,
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: <Widget>[
+                                                    Text("Brain Buttons",style: TextStyle(fontSize: 18),),
+                                                    Text("Wakes up body and brain")
+                                                  ],
+                                                ),
+                                              )
+                                          ),
+                                          Expanded(
+                                            flex: 3,
+                                            child: Container(
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Container(
+                                                        child: Column(
+                                                          children: <Widget>[
+                                                            Text("$currentitem\43"),
+                                                            Text("Practiced",style: TextStyle(fontSize: 12))
+                                                          ],
+                                                        )
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Container(
+                                                        child: Column(
+                                                          children: <Widget>[
+                                                            Text("$currentitem\433"),
+                                                            Text("Rating",style: TextStyle(fontSize: 12))
+                                                          ],
+                                                        )
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Container(
+                                                        child: Column(
+                                                          children: <Widget>[
+                                                            Text("$currentitem\4333"),
+                                                          ],
+                                                        )
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          )
+
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(   //right half of listitem
+                                    flex: 1,
+                                    child: Container(
+                                      child: Column(
+                                        children: <Widget>[
+                                          IconButton(icon: Icon(Icons.more_horiz)),
+                                          Text("$currentitem",style: TextStyle(fontSize: 22),),
+                                          Text("Ranking")
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Container(
+                      color: Colors.green,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: <Widget>[
+                        Positioned(
+                        child: Image.asset(
+                            "images/gym.jpeg",
+                        )
+                    ),
+          ]
+
+        ),),
+                    Container(
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }
-final topAppBar = AppBar(
-  elevation: 0.1,
-  backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-  title: Text("List of Exercises"),
-  actions: <Widget>[
-    IconButton(
-      icon: Icon(Icons.list),
-      onPressed: () {},
-    )
-  ],
-);
-final makeBottom = Container(
-  height: 55.0,
-  child: BottomAppBar(
-    color: Color.fromRGBO(58, 66, 86, 1.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        IconButton(
-          icon: Icon(Icons.home, color: Colors.white),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: Icon(Icons.blur_on, color: Colors.white),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: Icon(Icons.hotel, color: Colors.white),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: Icon(Icons.account_box, color: Colors.white),
-          onPressed: () {},
-        )
-      ],
-    ),
-  ),
-);
-
-final makeBody = Container(
-  child: ListView.builder(
-    scrollDirection: Axis.vertical,
-    shrinkWrap: true,
-    itemCount: 10,
-    itemBuilder: (BuildContext context, int index) {
-      return makeCard;
-    },
-  ),
-);
-
-final makeCard = Card(
-  elevation: 8.0,
-  margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-  child: Container(
-    decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
-    child: makeListTile,
-  ),
-);
-
-final makeListTile = ListTile(
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-    leading: Container(
-      padding: EdgeInsets.only(right: 12.0),
-      decoration: new BoxDecoration(
-          border: new Border(
-              right: new BorderSide(width: 1.0, color: Colors.white24))),
-      child: Icon(Icons.autorenew, color: Colors.white),
-    ),
-    title: Text(
-      "Brain Buttons",
-      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-    ),
-    // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
-
-    subtitle: Row(
-      children: <Widget>[
-        Icon(Icons.linear_scale, color: Colors.yellowAccent),
-        Text(" Beginner", style: TextStyle(color: Colors.white))
-      ],
-    ),
-    trailing:
-    Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 30.0));

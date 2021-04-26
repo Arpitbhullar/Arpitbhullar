@@ -1,72 +1,73 @@
+
+import 'package:final_project/components/rounded_button.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
-import 'dart:async';
-import 'package:image_picker/image_picker.dart';
 import 'package:final_project/components/Body.dart';
+
+import 'AccessPage.dart';
 
 class NewRecords extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new CameraAccess(),
-      debugShowCheckedModeBanner: false,
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("New Observation"),
+        ),
+        body: MyCustomForm(),
+      );
+
   }
 }
 
-
-class CameraAccess extends StatefulWidget {
+class MyCustomForm extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return new CameraAccessState();
+  MyCustomFormState createState() {
+    return MyCustomFormState();
   }
 }
 
-class CameraAccessState extends State<CameraAccess> {
-  File cameraFile;
-
+class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
-    //display image selected from gallery
-    selectFromCamera() async {
-      File cameraFile = (await ImagePicker.platform.pickImage(
-        source: ImageSource.camera,
-        // maxHeight: 50.0,
-        // maxWidth: 50.0,
-      )) as File;
-      setState(() {});
-    }
-
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Select/Capture Image for Record"),
-        backgroundColor: Colors.amber,
-        actions: <Widget>[
-          Text("",textScaleFactor: 3,)
-        ],
-      ),
-      body: new Builder(
-        builder: (BuildContext context) {
-          return Center(
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new RaisedButton(
-                    child: new Text('Select Image from Camera'),
-                    onPressed: selectFromCamera
-                ),
-                SizedBox(
-                  height: 200.0,
-                  width: 300.0,
-                  child: cameraFile == null
-                      ? Center(child: new Text('Sorry nothing selected!!'))
-                      : Center(child: new Image.file(cameraFile)),
-                )
-              ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Enter student\'s last name to search',
             ),
-          );
-        },
-      ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+          child: TextFormField(
+            decoration: InputDecoration(
+              border: UnderlineInputBorder(),
+              labelText: 'Your entry here',
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+          child: RoundedButton(
+    text: "Save Entry",
+    press: () {
+    Navigator.push(
+    context,
+    MaterialPageRoute(
+    builder: (context) {
+
+    return AccessPage();
+
+    },
+    ),
+    );
+    },
+            ),
+          ),
+      ],
     );
   }
 }

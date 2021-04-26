@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "306371142392",
+    "project_id": "teacherassist-f9ea8",
+    "storage_bucket": "teacherassist-f9ea8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306371142392:android:4d86f0df5f184d31f0510d",
+        "android_client_info": {
+          "package_name": "com.example.final_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306371142392-rv3je0hn300k933jkmgbljdh4iov7err.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqgshxPdRKdGzzk2A6OKpbnIlmchtIoLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306371142392-rv3je0hn300k933jkmgbljdh4iov7err.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
